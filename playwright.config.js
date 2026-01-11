@@ -39,7 +39,10 @@ export default defineConfig({
           name: 'Google Chrome',
           use: { ...devices['Desktop Chrome'],
           channel: 'chrome' },
-          viewport: { width: 1440, height: 900 },
+          viewport: null, // 👈 REQUIRED for full screen
+                launchOptions: {
+                  args: ['--start-maximized'], // 👈 maximizes Chrome
+                },
     },
     {
       name: 'chromium',

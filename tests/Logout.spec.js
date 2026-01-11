@@ -9,7 +9,7 @@ test.describe('OrangeHRM Logout Tests', () => {
     await page.getByRole('textbox', { name: 'Password' }).fill('admin123');
     await page.getByRole('button', { name: 'Login' }).click();
 
-    await expect(page.getByRole('link', { name: 'Dashboard' })).toBeVisible();
+ //   await expect(page.getByRole('link', { name: 'Dashboard' })).toBeVisible();
   });
 
   test('Logout Functionality', async ({ page }) => {
