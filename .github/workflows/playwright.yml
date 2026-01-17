@@ -5,6 +5,15 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  schedule:
+      # Daily at 10:00 AM IST
+      - cron: '30 4 * * *'
+
+      # Weekly on Monday at 11:00 AM IST
+      - cron: '30 5 * * 0'
+
+      # Alternate days at 12:00 PM IST
+      - cron: '30 6 */2 * *'
 
 jobs:
   test:
