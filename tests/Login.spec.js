@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('OrangeHRM Login Tests', () => {
 
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+    await page.goto('');
     await expect(page.getByRole('img', { name: 'company-branding' })).toBeVisible();
   });
 
@@ -25,7 +25,6 @@ test.describe('OrangeHRM Login Tests', () => {
   test('Only Password', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Password' }).fill('admin123');
     await page.getByRole('button', { name: 'Login' }).click();
-
     await expect(page.getByText('Required')).toBeVisible();
   });
 
@@ -40,6 +39,10 @@ test.describe('OrangeHRM Login Tests', () => {
   test('Valid Credentials', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Username' }).fill('Admin');
     await page.getByRole('textbox', { name: 'Password' }).fill('admin123435');
+    await page.locator('input[name="password"]').evaluate(el => {
+      el.setAttribute('type', 'text');
+    });
+    await page.waitForTimeout(5000);
     await page.getByRole('button', { name: 'Login' }).click();
 
     await expect(page.getByRole('link', { name: 'Dashboard' })).toBeVisible();
