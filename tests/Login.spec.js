@@ -18,7 +18,6 @@ test.describe('OrangeHRM Login Tests', () => {
   test('Only Username', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Username' }).fill('Admin');
     await page.getByRole('button', { name: 'Login' }).click();
-
     await expect(page.getByText('Required')).toBeVisible();
   });
 
@@ -38,13 +37,12 @@ test.describe('OrangeHRM Login Tests', () => {
 
   test('Valid Credentials', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Username' }).fill('Admin');
-    await page.getByRole('textbox', { name: 'Password' }).fill('admin123435');
-    await page.locator('input[name="password"]').evaluate(el => {
-      el.setAttribute('type', 'text');
-    });
-    await page.waitForTimeout(5000);
+    await page.getByRole('textbox', { name: 'Password' }).fill('admin123');
+//    await page.locator('input[name="password"]').evaluate(el => {
+//      el.setAttribute('type', 'text');
+//    });
+//    await page.waitForTimeout(5000);
     await page.getByRole('button', { name: 'Login' }).click();
-
     await expect(page.getByRole('link', { name: 'Dashboard' })).toBeVisible();
   });
 
