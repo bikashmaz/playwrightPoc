@@ -40,11 +40,11 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     //trace: 'on-first-retry',
 
-//    /* 🔽 Lower resolution screenshots */
-//     deviceScaleFactor: 1,
-//
-//    /* Set the resolution to 1280x720  */
-//     viewport: { width: 1280, height: 720 },
+    /* 🔽 Lower resolution screenshots */
+     deviceScaleFactor: 1,
+
+    /* Set the resolution to 1280x720  */
+     viewport: { width: 1280, height: 720 },
 
      /* 📸 Screenshot ONLY on failure */
      screenshot: 'only-on-failure',
