@@ -7,7 +7,7 @@ test.describe('OrangeHRM Login Tests', () => {
     await expect(page.getByRole('img', { name: 'company-branding' })).toBeVisible();
   });
 
-  test('No Credentials', async ({ page }) => {
+  test('Test Id 001: No Credentials', async ({ page }) => {
     await page.getByRole('button', { name: 'Login' }).click();
 
     const requiredErrors = page.getByText('Required');
@@ -15,19 +15,19 @@ test.describe('OrangeHRM Login Tests', () => {
     await expect(requiredErrors.nth(1)).toBeVisible();
   });
 
-  test('Only Username', async ({ page }) => {
+  test('Test Id 002: Only Username', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Username' }).fill('Admin');
     await page.getByRole('button', { name: 'Login' }).click();
     await expect(page.getByText('Required')).toBeVisible();
   });
 
-  test('Only Password', async ({ page }) => {
+  test('Test Id 003: Only Password', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Password' }).fill('admin123');
     await page.getByRole('button', { name: 'Login' }).click();
     await expect(page.getByText('Required')).toBeVisible();
   });
 
-  test('Wrong Credentials', async ({ page }) => {
+  test('Test Id 004: Wrong Credentials', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Username' }).fill('admin');
     await page.getByRole('textbox', { name: 'Password' }).fill('admin');
     await page.getByRole('button', { name: 'Login' }).click();
@@ -35,14 +35,11 @@ test.describe('OrangeHRM Login Tests', () => {
     await expect(page.getByText('Invalid credentials')).toBeVisible();
   });
 
-  test('Valid Credentials', async ({ page }) => {
+  test('Test Id 005: Valid Credentials', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Username' }).fill('Admin');
     await page.getByRole('textbox', { name: 'Password' }).fill('admin123');
-//    await page.locator('input[name="password"]').evaluate(el => {
-//      el.setAttribute('type', 'text');
-//    });
-//    await page.waitForTimeout(5000);
     await page.getByRole('button', { name: 'Login' }).click();
+
     await expect(page.getByRole('link', { name: 'Dashboard' })).toBeVisible();
   });
 

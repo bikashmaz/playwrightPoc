@@ -9,17 +9,12 @@ test.describe('OrangeHRM Logout Tests', () => {
     await page.getByRole('textbox', { name: 'Password' }).fill('admin123');
     await page.getByRole('button', { name: 'Login' }).click();
 
- //   await expect(page.getByRole('link', { name: 'Dashboard' })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Dashboard' })).toBeVisible();
   });
 
   test('Logout Functionality', async ({ page }) => {
-
-    // Open user dropdown
     await page.locator('i.oxd-userdropdown-icon').click();
-
-    // Click Logout
     await page.locator('a.oxd-userdropdown-link', { hasText: 'Logout' }).click();
-
     // Verify redirected to login page
     await expect(page.locator('img[alt="company-branding"]')).toBeVisible();
   });
