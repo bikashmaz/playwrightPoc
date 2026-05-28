@@ -5,6 +5,7 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  workflow_dispatch:
   schedule:
       # Daily at 10:00 AM IST
       - cron: '30 4 * * *'
